@@ -1,0 +1,19 @@
+{
+  "name": "webgis-1",
+  "version": "0.1.0",
+  "private": true,
+  "description": "基于 Vite + OpenLayers 的 WebGIS 示例：高德矢量/卫星底图、图层切换、比例尺、鼠标坐标与点击气泡",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "ol": "^10.11.0",
+    "ol-ext": "^4.0.38"
+  }
+}
