@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- HTML5 文档声明，必须放在最开头，让浏览器进入标准模式 -->
+<html lang="zh-CN">
+  <head>
+    <!-- 字符编码，必须放在 head 最前面，避免中文乱码 -->
+    <meta charset="UTF-8" />
+    <!-- 浏览器标签页图标，SVG 格式矢量图 -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- 移动端适配：页面宽度 = 设备宽度，初始缩放 1.0 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="基于 Vite + OpenLayers 的 WebGIS 示例：高德矢量/卫星底图切换、比例尺、鼠标经纬度、点击气泡。"
+    />
+    <title>WebGIS 地图应用 · OpenLayers</title>
+  </head>
+  <body>
+    <!-- 地图渲染容器，OpenLayers 会把地图画进这个 div -->
+    <div id="map"></div>
+
+    <!-- 鼠标坐标显示区，由 MousePosition 控件填充 -->
+    <div id="mouse-position"></div>
+
+    <!-- 地图弹窗：ol-popup 是 OpenLayers 的样式类，控制弹窗外观 -->
+    <div id="popup" class="ol-popup">
+      <!-- 弹窗右上角关闭按钮，点击后由 JS 隐藏弹窗 -->
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <!-- 弹窗内容区，点击地图后由 JS 填入坐标等信息 -->
+      <div id="popup-content"></div>
+    </div>
+
+    <!-- 入口脚本，type="module" 表示使用 ES 模块（可用 import/export） -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+/* 让页面铺满整个视口，去掉默认边距，禁止滚动条 */
+html, body {
+  margin: 0;          /* 去掉浏览器默认外边距 */
+  padding: 0;         /* 去掉浏览器默认内边距 */
+  width: 100%;        /* 相对父元素宽度 */
+  height: 100%;       /* 相对父元素高度 */
+  overflow: hidden;   /* 防止地图控件/弹窗溢出出现滚动条 */
+}
+
+/* 地图容器：占满整个视口 */
+#map {
+  width: 100vw;       /* vw = 视口宽度，比 100% 更直接表达“占满屏幕” */
+  height: 100vh;      /* vh = 视口高度 */
+}
+
+/* 鼠标坐标显示框：固定在地图右上角 */
+#mouse-position {
+  position: absolute;                  /* 相对最近的定位祖先绝对定位 */
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);/* 半透明白底，能看到底下的地图 */
+  padding: 4px 10px;                   /* 上下 4px，左右 10px */
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: monospace;              /* 等宽字体，坐标数字对齐好看 */
+  z-index: 1000;                       /* 盖过 OpenLayers 自带控件，1000 是习惯值 */
+}
+
+/* 地图弹窗：由 OpenLayers Overlay 锚定到点击坐标 */
+.ol-popup {
+  position: absolute;                  /* 位置由 Overlay 动态设置 */
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  bottom: 12px;                        /* 配合 Overlay 默认锚点，让弹窗出现在点击点上方 */
+  left: -50px;                         /* 经验值，使弹窗大致水平居中于锚点 */
+  min-width: 150px;                    /* 避免内容太少时太窄 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);/* 阴影，让弹窗有浮起感 */
+}
+
+/* 弹窗关闭按钮：右上角的“✖” */
+.ol-popup-closer {
+  text-decoration: none;   /* 去掉 <a> 默认下划线 */
+  position: absolute;      /* 相对弹窗绝对定位 */
+  top: 2px;
+  right: 8px;
+  color: #999;             /* 灰色，不抢眼 */
+}
+
+/* 用伪元素生成关闭符号，HTML 里不用写文字，换符号只改 CSS */
+.ol-popup-closer:after {
+  content: "✖";
+}
